@@ -141,7 +141,7 @@ app.get('/api/season-prices', (req, res) => {
 });
 
 app.get('/api/bookings', (req, res) => {
-  const { date, status } = req.query;
+  const { date, status, phone } = req.query;
   
   let filtered = [..._bookings];
   
@@ -151,6 +151,10 @@ app.get('/api/bookings', (req, res) => {
   
   if (status) {
     filtered = filtered.filter(b => b.status === status);
+  }
+  
+  if (phone) {
+    filtered = filtered.filter(b => b.phone === phone);
   }
   
   filtered.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));

@@ -89,11 +89,12 @@ export const api = {
     });
   },
 
-  getBookings: (date?: string, status?: string): Promise<Booking[]> => {
-    const params = new URLSearchParams();
-    if (date) params.set('date', date);
-    if (status) params.set('status', status);
-    const query = params.toString() ? `?${params.toString()}` : '';
+  getBookings: (params?: { date?: string; status?: string; phone?: string }): Promise<Booking[]> => {
+    const searchParams = new URLSearchParams();
+    if (params?.date) searchParams.set('date', params.date);
+    if (params?.status) searchParams.set('status', params.status);
+    if (params?.phone) searchParams.set('phone', params.phone);
+    const query = searchParams.toString() ? `?${searchParams.toString()}` : '';
     return request<Booking[]>(`/bookings${query}`);
   },
 

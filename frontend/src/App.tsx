@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "@/pages/Home";
 import Admin from "@/pages/Admin";
+import MyBookings from "@/pages/MyBookings";
 import { Navbar } from "@/components/Navbar";
 import { StarryBackground } from "@/components/StarryBackground";
 
@@ -14,6 +15,7 @@ export default function App() {
           <main className="flex-1">
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path="/my-bookings" element={<MyBookings />} />
               <Route path="/admin" element={<Admin />} />
             </Routes>
           </main>
